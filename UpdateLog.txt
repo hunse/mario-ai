@@ -1,0 +1,68 @@
+Mario AI benchmark update log.
+
+Version 0.2 DATE: 2010-11-08 (November)
+
+32. 
+31. Interface update: int[] getEvaluationInfoAsInts(); substituted float[] getEvaluationInfoAsFloatss();
+30. LICENSE.txt now in trunk
+29. New Feature: Seamless integration of AmiCo library. Example of Python->Java,
+    Java->Python agents in src/amico directory. Mac OS X 10.5.8 and above, Linux
+    are supported out of the box. For windows -- still some shamanic actions required. To be updated soon.
+
+Version 0.1.9 DATE: 2010-10-14 (October)
+
+28. Change: Option -lc moved to -lca (level cannons).
+27. New Feature: Hot key R to start/stop recording.
+26. Issue: Mario can jump in to the ground. fixed, r601.
+25. Improvement: Unit tests added for recorder and replayer. 
+24. Improvement: Option -l <fileName> with parameter loads .lvl file instead of creating the level. Option -s <fileName> with
+parameter saves generated level to the fileName.
+23. Change: License update. (license switch to "New BSD License", this allows anyone use our code even in commercial use,
+yet you have to mention the original authors and the web-site)
+22. Improvement: Recordings, Replays feature added. java Main -rec fileName to record or -rec on -- recording will be saved
+to file with a current timestamp(yyyy-MM-dd_HH-mm-ss). java Replay -rep fileName to replay the recording.
+21. Change: Environment.getEnemiesFloatPos() returns relative to mario coordinates. Centered on Mario.
+20. Bug fix: Environment.getEnemiesFloatPos() was not returning any information after encoding change.
+    (thanks to Isaiah Hines for posting and issue)
+19. Improvement: While in Visual mode press "Z" to double the size of the Mario Visual Component. 'Zoom in' is with smooth
+    graphics scaling. Press Z key to enable/disable doubled screen size.
+18. Improvement: (Visualization) Game State representation compressed.
+17. Improvement: Encoding update. Facilitates learning algorithms to learn the differences in terrain and enemies.
+
+Version 0.1.8 DATE: 2010-09-18 (September)
+
+16. Creatures and static Level components use separated Random generator. This update Allows to create specific levels
+    without creatures and then totally the same level including creatures.
+15. Creatures generation update, New creatures selection mode(creatures counters and mask), consult unittests folder for
+    more examples.
+14. Unit tests, JUnit + TestNG. 73 unit tests give you pretty good insight about how the benchmark does work, how can
+    you use it and gives some hints about internals that was hard to get quickly. To launch them all at together in IntelliJ
+    IDEA just run (Ctrl+Shift+F10) ch.idsia.unittests package. Please, report by posting and issue if any of them failed!
+13. Gravity options. "-mgr <float>" or setMarioGravity(float) influences the Mario gravity, "-cgr <float>"
+    setCreaturesGravity(float) -- the creatures' ones. These options will be used to create some new tasks for Learning
+    track; the agent will be compared to handle various physics of the Mario Environment.
+12. Optional Receptive Field Size. Default: 19x19 as before.
+11. Documentation updated (http://marioai.googlecode.com/svn/trunk/doc)
+10. Evaluation info outputs more exhaustive information about Agent performance after the end of the episode
+9. Number of collisions with creatures is available through the evaluation information
+8. For countable level elements output looks like: 32 of 128 (25% collected)
+7. Mario reason of death feature added; stored in memo of EvaluationInfo
+6. Dead-ends deepness depend on -ld option (the difficulty of the level)
+5. Mario Fly cheat added. Hotkey "f". CmdLineOption "-f <on|off>". This will also have a task in Learning track coupled
+with . This is true Super Mario now (see video )
+4. -ll (level length issue) fix: now '-ll 256' means Actually that lengh of the level available for Mario will be 256,
+the programmers' holiday is exactly the 256th day of the year.
+3. New "Mario Trace" feature. How to use it. While learning, for instance, you'd like to see where your agent is stuck
+    and to determine the problematic pieces of the level. It is easy to accumulate traces from several runs and
+    visualize them in a separate window. (Suggest you visualizer and contribute to Mario AI project! E-mail us about
+    your desire to contribute. This can be a simple optional extension for the current MarioVisualComponent or separate
+    window or part of the GameViewer, which is now can be launched with "-gv on" option). To enable trace option, just
+    tell "-trace on" to the CmdLineOptions class or java ch.idsia.scenarios.Main -trace on. After the episode is over,
+    you'll see the self-explaining output to std and the record to a .txt file in root directory. Trace records amount
+    of steps Mario spent in certain cell of the level.
+2. Length of the gap parameterization changed. Gaps are longer on higher difficulties, but with narrow hills to remain
+    sometimes passable.
+1. Gaps with hills if length of the gap > 8 cells;
+0. Mario initial position is optional and can be set by a task or from outside. This helps while learning: some
+    interesting piece of the level can be in the middle and you'd like your agent to start from some certain position.
+    Mario Initial X, Y ("-mix <int>" and "-miy <int>") will help to do so. Default position is 32, 32 in "physical" scale.

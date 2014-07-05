@@ -1,0 +1,32 @@
+CC = g++
+MKDIR = mkdir
+
+JVMDIR=/usr/lib/jvm/default-java
+
+SRCDIR = src
+BUILDDIR = build
+# CFLAGS = -shared -Wl,-soname,libAmiCoJavaPy.so.1 -fPIC -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions
+# CFLAGS = -shared -Wl,-soname,libAmiCoJavaPy.so.1 -fPIC -Wl,-O1 -Wl,-Bsymbolic-functions
+# CFLAGS = -shared -Wl,-soname,libAmiCoJavaPy.so.1 -fPIC -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-rdynamic
+# INCLUDES = -I/usr/include/python2.7 -I/usr/lib/jvm/java/include -I/usr/lib/jvm/java/include/linux
+# LFLAGS = -L/usr/lib/jvm/java/jre/lib -L/usr/lib/jvm/java/jre/lib/i386/server -L/opt/epd/lib
+
+CFLAGS = -shared -fPIC -Wl,-sq
+INCLUDES = -I/usr/include/python2.7 -I$(JVMDIR)/include -I$(JVMDIR)/include/linux
+LFLAGS = -L$(JVMDIR)/jre/lib -L$(JVMDIR)/jre/lib/amd64/server -L/opt/epd/lib
+LIBS = -ljvm -lpthread -lz -lutil -lpython2.7
+MAIN = $(BUILDDIR)/libAmiCoJavaPy.so
+
+all: $(MAIN)
+
+$(MAIN):
+	${MKDIR} -p $(BUILDDIR)
+	$(CC) $(CFLAGS) $(INCLUDES) $(LFLAGS) $(LIBS) -o $(MAIN) $(SRCDIR)/ch_idsia_tools_amico_AmiCoJavaPy.cc
+
+.PHONY: clean
+
+clean:
+	rm -f $(MAIN)
+
+# DO NOT DELETE THIS LINE
+

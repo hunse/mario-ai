@@ -1,0 +1,122 @@
+\documentclass[landscape]{report}
+\usepackage[pdftex,unicode]{hyperref}
+\usepackage[margin=2cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{longtable}
+\begin{document}
+\section*{Mario AI Benchmark \footnote{v-0.1.9 compliant}. Setup options.}
+
+\begin{center}
+\begin{longtable}{|c|p{6cm}|p{4cm}|c|p{6cm}|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Option key}} & \multicolumn{1}{c|}{\textbf{Description}} & \multicolumn{1}{c|}{\textbf{Value range}} & \multicolumn{1}{c|}{\textbf{Example}} & \multicolumn{1}{c|}{\textbf{(Get\slash Set)er}} \\ \hline 
+\endfirsthead
+\multicolumn{5}{c}%
+{}\\%{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+\hline
+\multicolumn{1}{|c|}{\textbf{Option key}} & \multicolumn{1}{c|}{\textbf{Description}} & \multicolumn{1}{c|}{\textbf{Value range}} & \multicolumn{1}{c|}{\textbf{Example}} & \multicolumn{1}{c|}{\textbf{(Get\slash Set)er}} \\ \hline 
+\endhead
+
+\hline \multicolumn{5}{|r|}{{Continued on next page}} \\ \hline
+\endfoot
+
+\hline
+\endlastfoot
+   -echo & Output all command line options to console after initialization & $<$on$|$off$>$. Default: off & {\texttt Main -echo on} & \texttt{isEcho}\slash \texttt{setEcho} \\ 
+   \hline
+   -ag & AgentName should extend RegisterableAgent in order for the native agent to be available from command line & AgentName or Agents implementations. Default: HumanKeyboardAgent & {\texttt Main -ag ForwardAgent} & \texttt{getAgent}\slash \texttt{setAgent} \\
+   \hline
+   -ze & Observation Detalization for Enemies. 0 - The most detailed & $<$0$|$1$|$2$>$. Default: 0 & {\texttt Main -ze 0} & \texttt{getZLevelScene}\slash \texttt{setZLevelScene}\\
+   \hline
+   -vis & Enable Visualization & $<$on$|$off$>$. Default: off & {\texttt Main -vis on} & \texttt{isVisualization}\slash \texttt{setVisualization}\\
+   \hline
+   -vaot & Set main View to be on top of other windows & $<$on$|$off$>$. Default: off & {\texttt Main -vaot on} & \texttt{isViewerAlwaysOnTop}\slash \texttt{setViewerAlwaysOnTo}\\
+   \hline
+   -tl & Time limit. Option value: [1..MAXINT], units: marioseconds (1 MrSEC == 16 interactions with Environment). To give to the Agent the opportunity of infinitie time per level use Option value $= -1$ & $<$int$>$. Default: 200 & {\texttt Main -tl 42} & \texttt{getTimeLimit}\slash \texttt{setTimeLimit}\\
+   \hline
+   -pw & Pause of the World. Freezes animation all the sprites and disables Mario interaction with creatures. Mario still can run and get level observation & $<$on$|$off$>$. Default: off & {\texttt Main -pw on} & \texttt{isPauseWorld}\slash \texttt{setPauseWorld}\\
+   \hline
+   -pr & Enable Power restoration. Enable Power restoration by pressing speed button (A on a keyboard) & $<$on$|$off$>$. Default: off & {\texttt Main -pr on} & \texttt{isPowerRestoration}\slash \texttt{setPowerRestoration} \\
+   \hline
+   -ewf & Exit program when simulation is over & $<$on$|$off$>$. Default: on & {\texttt Main -ewf off} & \texttt{isExitProgramWhenFinished}\slash \texttt{setExitProgramWhenFinished} \\
+   \hline
+   -gv & Enable Game Viewer & $<$on$|$off$>$. Default: off & {\texttt Main -gv on} & \texttt{isGameViewer}\slash \texttt{setGameViewer} \\
+   \hline
+   -gvc & Enable Continuous Updates in GameViewer & $<$on$|$off$>$. Default: off & {\texttt Main -gvc on} & \texttt{isGameViewerContinuousUpdates}\slash \texttt{setGameViewerContinuousUpdates} \\
+   \hline
+   -rfw & Set receptive field width & Any odd number $\in (0, -ll)$. Default: 19. & {\texttt Main -rfw 5} & \texttt{getReceptiveFieldWidth}\slash \texttt{setReceptiveFieldWidth} \\
+   \hline
+   -rfh & Set receptive field height & Any odd number $\in (0, -lh)$. Default: 19. & {\texttt Main -rfh 7} & \texttt{getReceptiveFieldHeight}\slash \texttt{setReceptiveFieldHeight} \\
+   \hline
+   -srf & Set receptive field (grid) visible & $<$on$|$off$>$ Default: off & {\texttt Main -srf on} & \texttt{isReceptiveFieldVisualized}\slash \texttt{setReceptiveFieldVisualized} \\
+   \hline
+   -mm & Mario Mode. 0 -- small,1 - large, 2 - large, fire ability is available & $<$0$|$1$|$2$>$. Default: 2 & {\texttt Main -mm 1} & \texttt{getMarioMode}\slash \texttt{seMarioMode} \\
+   \hline
+   -mgr & Mario gravity. Than greater number, than greater gravity & Any number $\in (0, 2)$. Default: 1 & {\texttt Main -mgr 0.8} & \texttt{getMarioGravity}\slash \texttt{setMarioGravity} \\
+   \hline
+   -cgr & Creatures gravity. Than greater number, than greater gravity & Any number $\in (0, 2)$. Default: 1 & {\texttt Main -cgr 1.5} & \texttt{getCreaturesGravity}\slash \texttt{None} \\
+   \hline
+   -fps & Change FPS. 100 enables max FPS & $<$integers in [1..100]$>$. Default: 24 & {\texttt Main -fps 50} & \texttt{getFPS}\slash \texttt{setFPS} \\
+   \hline
+   -lt & Level type. 0 - Overground, 1 - Underground, 2 - Castle & $<$0$|$1$|$2$>$. Default: 0 & {\texttt Main -lt 1} & \texttt{getLevelType}\slash \texttt{setLevelType} \\
+   \hline
+   -ls & Level (Randomization) Seed & $<$integers in [1..maxInt] $|$ Path to the \texttt{.lvl} file$>$. Default: 0 & {\texttt Main -ls 42} & \texttt{getLevelRandSeed}\slash \texttt{setLevelRandSeed} \\
+   \hline
+   -ll & Level length & $<$integers in [1..4096]$>$. Default: 320 & {\texttt Main -ll 550} & \texttt{getLevelLength}\slash \texttt{setLevelLength} \\
+   \hline
+   -lh & Level height & $<$integers in [1..4096]$>$. Default: 15 & {\texttt Main  -lh 18} & \texttt{getLevelHeight}\slash \texttt{setLevelHeight} \\
+   \hline
+   -ld & Level Difficulty & $<$integers in [0..maxInt]$>$. Default: 0 & {\texttt Main -ld 5} & \texttt{getLevelDifficulty}\slash \texttt{setLevelDifficulty} \\
+   \hline
+   -lde & Enable\slash disable dead ends on the level & $<$on$|$off$>$. Default: off & {\texttt Main -lde on} & \texttt{getDeadEndsCount}\slash \texttt{setDeadEndsCound} \\
+   \hline
+   -lca & Enable\slash disable cannons on the level & $<$on$|$off$>$. Default: on & {\texttt Main -lca off } & \texttt{getCannonsCount}\slash \texttt{setCannonsCount} \\
+   \hline
+   -lhs & Enable\slash Disable hills on the level & $<$on$|$off$>$. Default: on & {\texttt Main -lhs off } & \texttt{getHillStraightCount}\slash \texttt{setHillStraightCount} \\
+   \hline
+   -ltb & Enable\slash Disable tubes on the level & $<$on$|$off$>$. Default: on & {\texttt Main -ltb off } & \texttt{getTubesCount}\slash \texttt{setTubesCount} \\
+   \hline
+   -lg & Enable\slash Disable gaps on the level & $<$on$|$off$>$. Default: on & {\texttt Main -lg off } & \texttt{getGapsCount}\slash \texttt{setGapsCount} \\
+   \hline
+   -lhb & Enable\slash Disable hidden blocks on the level\footnote{If level is build with dead ends and without hidden blocks, then you will go out from dead end over visible blocks, e.g. hidden blocks are replaced with visible blocks.} & $<$on$|$off$>$. Default: off & {\texttt Main -lhb off } & \texttt{getHiddenBlocksCount}\slash \texttt{setHiddenBlocksCount} \\
+   \hline
+   -le & Customize creatures on the level. Creatures, that will be on the level are defined with first letter of the creature kind:
+	\center{
+	\begin{tabular}{| c | c |}
+	    \hline
+	    Creature & Short name \\
+	    \hline \hline
+	    Goomba & g \\
+	    \hline
+	    Goomba Winged & gw \\
+	    \hline
+	    Green Koopa & gk \\
+	    \hline
+	    Green Koopa Winged & gkw \\
+	    \hline
+	    Red Koopa & rk \\
+	    \hline
+	    Red Koopa Winged & rkw \\
+	    \hline
+	    Spiky & s \\
+	    \hline
+	    Spiky Winged & sw \\
+	    \hline
+	\end{tabular}
+	}
+    For more details and examples see \texttt{marioai-lvlgen-options-usage.pdf}& List of creatures separated by comma. Default:~``~``~(empty~string) & {\texttt Main -le off } & \texttt{getEnemies}\slash \texttt{setEnemies} \\
+   \hline
+   -lb & Enable\slash Disable visible blocks on the level & $<$on$|$off$>$. Default: on & {\texttt Main -lb off } & \texttt{getBlocksCoutn}\slash \texttt{setBlocksCount} \\
+   \hline
+   -lco & Enable\slash Disable coins on the level & $<$on$|$off$>$. Default: on & {\texttt Main -lco off } & \texttt{getCounsCount}\slash \texttt{setCounsCount} \\
+   \hline
+   -lf & Create flat level & $<$on$|$off$>$. Default: off & {\texttt Main -lf on} & \texttt{isFlatLevel}\slash \texttt{setFlatLevel} \\
+   \hline
+   -punj & Enable\slash Disable bytecode counting & $<$on$|$off$>$. Default: on & {\texttt Main -punj off } & \texttt{isPunj}\slash \texttt{setPunj} \\
+   \hline
+   -stop & Run benchmark and stop a gameplay. To continue a gameplay press a \texttt{SPACEBAR} key. & $<$on$|$off$>$. Default: off & {\texttt Main -stop on} & \texttt{isStopGameplay}\slash \texttt{setStopGamePlay} \\
+   \hline
+   -z & Enable Scale2X on startup & $<$on$|$off$>$. Default: off & {\texttt Main -z on} & \texttt{isScale2X}\slash \texttt{setScale2X} \\
+\end{longtable}
+\end{center}
+\end{document}

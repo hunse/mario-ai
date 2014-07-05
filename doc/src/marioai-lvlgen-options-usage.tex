@@ -1,0 +1,50 @@
+\documentclass{report}
+\usepackage{indentfirst}
+\usepackage[margin=2cm]{geometry}
+\begin{document}
+\section*{MarioAI Benchmark. Level Generator. Usage examples.}
+Here are some examples how to use combination of various options. \\
+Launch the benchmark as usual : \texttt{java~ch.idsia.scenarios.Main [params]}. \\ Short form is used further in the text: \texttt{Main -lco off}.
+\begin{enumerate}
+\item A flat level\footnote{Here and further option \emph{-le} used with key \emph{off} to disable creatures.}: \newline %1
+\texttt{Main~-lco~off~-lb~off~-le~off~-lhb~off~-lg~off~-ltb~off~-lhs~off~-lc~off~-lde~off~-lf~on.}
+\item A flat level with blocks:\newline %2
+\texttt{Main~-lco~off~-lb~on~-le~off~-lhb~off~-lg~off~-ltb~off~-lhs~off~-lc~off~-lde~off~-lf~on.}
+\item Blocks and coins:\newline %3
+\texttt{Main~-lco~on~-lb~on~-le~off~-lhb~off~-lg~off~-ltb~off~-lhs~off~-lc~off~-lde~off.}
+\item Blocks, creatures\footnote{Here and further option \emph{-le} used with key \emph{g,gw,gk,gkw,rk,rkw,s,sw} to enable creatures on the level.In this case selected creatures will be placed on the level regardless of the difficulty of the level.} and coins:\newline %4
+\texttt{Main~-lco~on~-lb~on~-le~g,gw,gk,gkw,rk,rkw,s,sw~-lhb~off~-lg~off~-ltb~off~-lhs~off~-lc~off~-lde~off.}
+\item Blocks, hidden blocks and coins:\newline %5
+\texttt{Main~-lco~on~-lb~on~-le~0~-lhb~on~-lg~off~-ltb~off~-lhs~off~-lc~off~-lde~off.}
+\item Blocks, hidden blocks, coins and creatures:\newline %6
+\texttt{Main~-lco~on~-lb~on~-le~g,gw,gk,gkw,rk,rkw,s,sw~-lhb~on~-lg~off~-ltb~off~-lhs~off~-lc~off~-lde~off.}
+\item Deadends  and blocks:\newline %7
+\texttt{Main~-lco~off~-lb~on~-le~off~-lhb~off~-lg~off~-ltb~off~-lhs~off~-lc~off~-lde~on.}
+\item Deadends, blocks and hidden blocks:\newline %8
+\texttt{Main~-lco~off~-lb~on~-le~off~-lhb~on~-lg~off~-ltb~off~-lhs~off~-lc~off~-lde~on.}
+\item Deadends and hidden blocks:\newline %9
+\texttt{Main~-lco~off~-lb~off~-le~off~-lhb~on~-lg~off~-ltb~off~-lhs~off~-lc~off~-lde~on.}
+\item Deadends, blocks, hidden blocks and creatures:\newline %10
+\texttt{Main~-lco~off~-lb~on~-le~g,gw,gk,gkw,rk,rkw,s,sw~-lhb~on~-lg~off~-ltb~off~-lhs~off~-lc~off~-lde~on.}
+\item A flat level with tubes: \newline %11
+\texttt{Main~-lco~off~-lb~off~-le~off~-lhb~off~-lg~off~-ltb~on~-lhs~off~-lc~off~-lde~off~-lf~on.}
+\item A flat level with gaps: \newline %12
+\texttt{Main~-lco~off~-lb~off~-le~off~-lhb~off~-lg~on~-ltb~off~-lhs~off~-lc~off~-lde~off~-lf~on.}
+\item Tubes and gaps: \newline %13
+\texttt{Main~-lco~off~-lb~off~-le~off~-lhb~off~-lg~on~-ltb~on~-lhs~off~-lc~off~-lde~off.}
+\item Cannons: \newline %14
+\texttt{Main~-lco~off~-lb~off~-le~off~-lhb~off~-lg~off~-ltb~off~-lhs~off~-lc~on~-lde~off.}
+\item Tubes, gaps and cannons: \newline %15
+\texttt{Main~-lco~off~-lb~off~-le~off~-lhb~off~-lg~on~-ltb~on~-lhs~off~-lc~on~-lde~off.}
+\item Goomba and winged spiky\footnote{here and further option \emph{-le} used with different key(e.g. g,sw). In this case selected creatures will be placed on the level regardless of the difficulty of the level.}: \newline %16
+\texttt{Main ~-lco~off~-lb~off~-le~g,ws~-lhb~off~-lg~off~-ltb~off~-lhs~off~-lc~off~-lde~off.}
+\item Deadends and red koopa: \newline %17
+\texttt{Main~-lco~off~-lb~off~-le~rk~-lhb~off~-lg~off~-ltb~off~-lhs~off~-lc~off~-lde~on.}
+\item Mario gravity: \newline %18
+\texttt{Main~-mgr~1.4.}
+\item Mario gravity and creatures gravity: \newline %19
+\texttt{Main~-mgr~1.4~-cgr~0.8.}
+
+
+\end{enumerate}
+\end{document}

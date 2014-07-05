@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="ch/idsia/unittests/" kind="src" output="bin" path="src"/>
+	<classpathentry kind="var" path="JRE_LIB" sourcepath="JRE_SRC"/>
+	<classpathentry kind="lib" path="/data/eric/Dropbox/projects/infinitemario/marioai/lib/junit-4.8.2.jar"/>
+	<classpathentry kind="lib" path="/data/eric/Dropbox/projects/infinitemario/marioai/lib/jdom.jar"/>
+	<classpathentry kind="lib" path="/data/eric/Dropbox/projects/infinitemario/marioai/lib/asm-all-3.3.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
