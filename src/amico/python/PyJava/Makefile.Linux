@@ -14,7 +14,7 @@ all: $(MAIN)
 
 $(MAIN):
 	${MKDIR} -p $(BUILDDIR)
-	$(CC) $(CFLAGS) $(INCLUDES) $(LFLAGS) $(LIBS) -o $(MAIN) $(SRCDIR)/PythonCallsJava.cc
+	$(CC) $(SRCDIR)/PythonCallsJava.cc $(CFLAGS) $(INCLUDES) $(LFLAGS) $(LIBS) -o $(MAIN)
 
 .PHONY: clean
 

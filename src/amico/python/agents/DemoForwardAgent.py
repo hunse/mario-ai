@@ -76,8 +76,8 @@ def amiCoSimulator():
 	# name =  'AmiCoPyJava'
         # loadName = find_library(name)
         ##########################################
-        # loadName = './libAmiCoPyJava.so'
-        loadName = '../JavaPy/build/libAmiCoJavaPy.so' 
+        loadName = os.path.abspath(os.path.dirname(__file__)) + '/../PyJava/build/libAmiCoPyJava.so'
+        print loadName
         libamico = ctypes.CDLL(loadName)
         print libamico
     else: #else if OS is a Mac OS X (libAmiCo.dylib is searched for) or Windows (AmiCo.dll)
@@ -86,11 +86,11 @@ def amiCoSimulator():
         print loadName
         libamico = ctypes.CDLL(loadName)
         print libamico
-    
+
     javaClass = "ch/idsia/benchmark/mario/environments/MarioEnvironment"
     libamico.amicoInitialize(1, "-Djava.class.path=." + os.pathsep +":../lib/jdom.jar")
     libamico.createMarioEnvironment(javaClass)
-    
+
     reset = cfunc('reset', libamico, None, ('list', ListPOINTER(c_int), 1))
     getEntireObservation = cfunc('getEntireObservation', libamico, py_object,
                                  ('list', c_int, 1),
@@ -98,7 +98,7 @@ def amiCoSimulator():
     performAction = cfunc('performAction', libamico, None, ('list', ListPOINTER(c_int), 1))
     getEvaluationInfo = cfunc('getEvaluationInfo', libamico, py_object)
     getObservationDetails = cfunc('getObservationDetails', libamico, py_object)
-    
+
     agent = ForwardAgent()
 
     options = ""
@@ -117,7 +117,7 @@ def amiCoSimulator():
         obsDetails = getObservationDetails()
         agent.setObservationDetails(obsDetails[0], obsDetails[1], obsDetails[2], obsDetails[3])
         while (not libamico.isLevelFinished()):
-            totalIterations +=1 
+            totalIterations +=1
             libamico.tick();
             obs = getEntireObservation(1, 0)
 
@@ -132,5 +132,3 @@ def amiCoSimulator():
 
 if __name__ == "__main__":
     amiCoSimulator()
-
-

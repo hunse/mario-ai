@@ -1,0 +1,11 @@
+*.pyc
+
+# project directories
+bin/
+src/amico/python/JavaPy/build/
+src/amico/python/PyJava/build/
+
+# Eclipse stuff
+.classpath
+.metadata/
+.project

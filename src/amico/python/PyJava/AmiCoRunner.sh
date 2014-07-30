@@ -234,7 +234,7 @@ fi
 			fi
 		else
             CLASSPATH="$CLASSPATH:$SCI/modules/jvm/jar/org.scilab.modules.jvm.jar"
-		# @TODO This is the default path of the official sun JVM. 
+		# @TODO This is the default path of the official sun JVM.
 		# It is different for other implementation of the JVM....
 		    LD_LIBRARY_PATH="$JRE_HOME/lib/$proc/:$JRE_HOME/lib/$proc/server/:$JRE_HOME/lib/$proc/native_threads/:$LD_LIBRARY_PATH"
 		    LD_LIBRARY_PATH="$JRE_HOME/lib/$proc/:$JRE_HOME/lib/$proc/server/:$JRE_HOME/lib/$proc/native_threads/:$LD_LIBRARY_PATH"
@@ -254,5 +254,9 @@ fi
 ####### END OF JAVA ENV DETECTION/SETTING ######
 }
 
-detect_java_vm
+# detect_java_vm
+
+JAVAPATH=/usr/lib/jvm/default-java
+export LD_LIBRARY_PATH=${JAVAPATH}/jre/lib:${JAVAPATH}/jre/lib/amd64/server
+
 python "$1" "$2"

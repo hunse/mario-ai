@@ -19,7 +19,7 @@ class ForwardAgent(MarioAgent):
     enemiesFloats = None
     isEpisodeOver = False
     marioState = None
-    
+
     trueJumpCounter = 0;
     trueSpeedCounter = 0;
 
@@ -28,7 +28,7 @@ class ForwardAgent(MarioAgent):
     receptiveFieldHeight = 19
     marioEgoRow = 9
     marioEgoCol = 9
-    
+
     agentName = "AmiCo Python Forward Agent"
 
 
@@ -36,7 +36,7 @@ class ForwardAgent(MarioAgent):
         self.isEpisodeOver = False
         self.trueJumpCounter = 0;
         self.trueSpeedCounter = 0;
-        
+
     def __init__(self):
         """Constructor"""
         self.trueJumpCounter = 0
@@ -50,13 +50,13 @@ class ForwardAgent(MarioAgent):
         if (x < 0 or x >= self.marioEgoRow or y < 0 or y >= self.marioEgoCol):
             return 0
         return self.levelScene[x][y]
-        
+
     def setObservationDetails(self, rfWidth, rfHeight, egoRow, egoCol):
         self.receptiveFieldWidth = rfWidth
         self.receptiveFieldHeight = rfHeight
         self.marioEgoRow = egoRow;
         self.marioEgoCol = egoCol;
-        
+
     def _dangerOfGap(self):
         fromX = self.marioEgoRow
         fromY = self.marioEgoCol
@@ -136,10 +136,10 @@ class ForwardAgent(MarioAgent):
     	#print "M: mayJump: %s, onGround: %s, level[11,12]: %d, level[11,13]: %d, jc: %d" % (self.mayMarioJump, self.isMarioOnGround, self.levelScene[11,12], self.levelScene[11,13], self.trueJumpCounter)
     	if (self.isEpisodeOver):
     	    return (1, 1, 1, 1, 1, 1)
-               
+
             #print "LevelScene: \n"
             #print self.levelScene
-            
+
     	danger = self._dangerOfGap()
         #print "entered getAction1"
         if (self.getReceptiveFieldCellValue(self.marioEgoRow, self.marioEgoCol + 2) != 0 or \
@@ -173,18 +173,18 @@ class ForwardAgent(MarioAgent):
         #print "Py: got observation::: marioPos: \n", marioPos
         #print "Py: got observation::: enemiesPos: \n", enemiesPos
         #print "Py: got observation::: marioState: \n", marioState
-                
+
         row = self.receptiveFieldHeight
         col = self.receptiveFieldWidth
         levelScene=[]
         enemiesObservation=[]
-        
+
         for i in range(row):
             levelScene.append(squashedObservation[i*col:i*col+col])
-	    
+
         for i in range(row):
             enemiesObservation.append(squashedEnemies[i*col:i*col+col])
-        
+
         self.marioFloats = marioPos
         self.enemiesFloats = enemiesPos
         self.mayMarioJump = marioState[3]

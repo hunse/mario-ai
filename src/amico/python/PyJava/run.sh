@@ -16,7 +16,7 @@ MAKE_OUT_DIR="./build"
 CMD_LINE_OPTIONS=
 AGENT=
 LIBRARY_FILE_NAME=
-COMPILE_LIBRARY="true"
+COMPILE_LIBRARY="false"
 
 if [ "$#" -gt 0 ]; then
     until [ -z "$1" ];
