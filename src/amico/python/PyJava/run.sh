@@ -59,12 +59,14 @@ if [ "$LIBRARY_FILE_NAME" = "" ]; then
 fi
 
 if [ "$COMPILE_LIBRARY" = "true" ]; then
-    mv "$MAKE_OUT_DIR/$LIBRARY_FILE_NAME" "$OUT_DIR/$BUILD_DIR/"
+    mv -f "$MAKE_OUT_DIR/$LIBRARY_FILE_NAME" "$OUT_DIR/$BUILD_DIR/"
     rm -rf "$MAKE_OUT_DIR"
+else
+    cp -f "$MAKE_OUT_DIR/$LIBRARY_FILE_NAME" "$OUT_DIR/$BUILD_DIR/"
 fi
 
-cp AmiCoRunner.sh "$OUT_DIR/$BUILD_DIR/"
-cp ../agents/*.py "$OUT_DIR/$BUILD_DIR/"
+cp -f AmiCoRunner.sh "$OUT_DIR/$BUILD_DIR/"
+cp -f ../agents/*.py "$OUT_DIR/$BUILD_DIR/"
 cp -r "$MARIO_DIR/ch" "$OUT_DIR/$BUILD_DIR/"
 
 if [ "$AGENT" = "" ]; then

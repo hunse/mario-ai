@@ -76,7 +76,8 @@ def amiCoSimulator():
 	# name =  'AmiCoPyJava'
         # loadName = find_library(name)
         ##########################################
-        loadName = os.path.abspath(os.path.dirname(__file__)) + '/../PyJava/build/libAmiCoPyJava.so'
+        # loadName = os.path.abspath(os.path.dirname(__file__)) + '/../PyJava/build/libAmiCoPyJava.so'
+        loadName = os.path.abspath(os.path.dirname(__file__)) + '/libAmiCoPyJava.so'
         print loadName
         libamico = ctypes.CDLL(loadName)
         print libamico
