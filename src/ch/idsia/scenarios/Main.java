@@ -59,10 +59,8 @@ public static void main(String[] args)
 
 public static void runUserPlayTask(MarioAIOptions marioAIOptions)
 {
-//	final Agent agent = new ForwardJumpingAgent();
-//	marioAIOptions.setAgent(agent);
-	
 	marioAIOptions.setVisualization(true);
+//	marioAIOptions.setFlatLevel(true);
 	
     final BasicTask basicTask = new BasicTask(marioAIOptions);
     basicTask.setOptionsAndReset(marioAIOptions);

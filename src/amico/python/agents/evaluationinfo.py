@@ -10,21 +10,6 @@ class Inspectable(object):
 
 class EvaluationInfo(Inspectable):
     def __init__(self, evInfo):
-        print "widthCells = ", evInfo[0]
-        print "widthPhys  = ", evInfo[1]
-        print "flowersDevoured = ", evInfo[2]
-        print "killsByFire = ", evInfo[3]
-        print "killsByShell = ", evInfo[4]
-        print "killsByStomp = ",  evInfo[5]
-        print "killsTotal = ", evInfo[6]
-        print "marioMode = ", evInfo[7]
-        print "marioStatus = ", evInfo[8]
-        print "mushroomsDevoured = ", evInfo[9]
-        print "marioCoinsGained = ", evInfo[10]
-        print "timeLeft = ", evInfo[11]
-        print "timeSpent = ", evInfo[12]
-        print "hiddenBlocksFound = ", evInfo[13]
-
         self.widthCells = evInfo[0]
         self.widthPhys = evInfo[1]
         self.flowersDevoured = evInfo[2]
@@ -39,4 +24,3 @@ class EvaluationInfo(Inspectable):
         self.timeLeft = evInfo[11]
         self.timeSpent = evInfo[12]
         self.hiddenBlocksFound = evInfo[13]
-

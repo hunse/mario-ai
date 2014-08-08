@@ -12,7 +12,7 @@
  * as passive entity and only as evaluation function. MarioEnvironment singleton
  * is accessed to evaluate the agent and perform one interaction: the @c tick()
  * of the MarioEnvironment.
- */ 
+ */
 
 #include <Python.h>
 
@@ -75,8 +75,8 @@ _AMICOPYJAVA_API void initMarioAIBenchmark();
 
 /**
  Function @c setArraySize must be invoked before calling of the method that takes arrays as arguments.
- 
- @brief Dynamic array keeping number of elements in corresponding array in method args. 
+
+ @brief Dynamic array keeping number of elements in corresponding array in method args.
 */
 unsigned int* arraysSize;
 
@@ -179,16 +179,16 @@ _AMICOPYJAVA_API void destroyEnvironment()
     exit(0);
 }
 
-/** 
+/**
  @brief Destroys @c Java @c Virtual @c Machine.
- 
+
  This function used when internal error occured and JVM should be destroyed.
  Return code is -1.
  */
 void destroyVM() {
     if (arraysSize != NULL)
         delete[] arraysSize;
-    
+
     std::cerr << "\n\nAmiCo: Internal ERROR! DESTROYING VM\n\n";
     std::cerr.flush();
     if ((env)->ExceptionOccurred()) {
@@ -300,7 +300,8 @@ jobject safeCallObjectMethod(jmethodID mid, int arg)
 
     jobject a = (env)->CallObjectMethod(obj, mid, arg);
     if (a == NULL) {
-        fprintf(stderr, "C++: Mario AmiCo Error: array is NULL. Destroying VM.");
+        std::cerr << "AmiCo: Error calling " << mid
+                  << ": return value is NULL. Destroying VM." << std::endl;
         fflush(stderr);
         destroyVM();
     } else {
@@ -378,20 +379,20 @@ _AMICOPYJAVA_API PyObject* getEntireObservation(int zLevelScene, int zLevelEnemi
     env->DeleteLocalRef(marioPos);
     env->DeleteLocalRef(enemiesPos);
     env->DeleteLocalRef(marioState);
-    
+
     return pyTuple;
 }
 
 _AMICOPYJAVA_API PyObject* getObservationDetails()
 {
 	PyObject* pyTuple = 0;
-	
+
 	jintArray obsDetails = (jintArray)safeCallObjectMethod(midGetObservationDetails, 0);
-	
+
 	pyTuple = convertJavaArrayToPythonArray<jintArray, jint>(env, obsDetails, 'I');
-	
+
 	env->DeleteLocalRef(obsDetails);
-	
+
 	return pyTuple;
 }
 

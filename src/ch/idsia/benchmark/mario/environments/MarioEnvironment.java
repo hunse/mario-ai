@@ -672,7 +672,9 @@ private void computeEvaluationInfo()
     evaluationInfo.marioTraceFileName = marioTraceFile;
     evaluationInfo.marioTrace = levelScene.level.marioTrace;
     evaluationInfo.greenMushroomsDevoured = Mario.greenMushroomsDevoured;
-    evaluationInfo.bytecodeInstructions = PunctualJudge.getCounter();
+
+    // EH: the below line causes problems when calling from Python
+//    evaluationInfo.bytecodeInstructions = PunctualJudge.getCounter();
 }
 
 public void setAgent(Agent agent)
