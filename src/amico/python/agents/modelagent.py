@@ -1,9 +1,16 @@
 # -*- coding: utf-8 -*-
+__author__ = "Sergey Karakovskiy, sergey at idsia fullstop ch"
+__date__ = "$May 1, 2009 2:46:34 AM$"
 
 from marioagent import MarioAgent
 
 
-class QLearningAgent(MarioAgent):
+class ModelAgent(MarioAgent):
+    """An agent demonstrating how to use the MarioAgent base class
+    and Simulator object.
+
+    Adapted from forwardagent.py.
+    """
 
     def __init__(self):
         self.reset()
@@ -28,6 +35,8 @@ class QLearningAgent(MarioAgent):
             return self.scene[i, j]
 
     def getAction(self):
+        """ Possible analysis of current observation and sending an action back
+        """
         if self.isEpisodeOver:
             return self.Action(True).as_tuple()
 
@@ -53,7 +62,7 @@ class QLearningAgent(MarioAgent):
 if __name__ == '__main__':
     from simulator import Simulator
 
-    agent = QLearningAgent()
+    agent = ModelAgent()
     sim = Simulator(agent, visualize=True)
     info = sim.run_level(seed=0)
     print info
